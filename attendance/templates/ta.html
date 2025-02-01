@@ -1,0 +1,59 @@
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flashes">
+    {% for message in messages %}
+      <div class="alert">{{ message }}</div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ta.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <!-- <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo"> -->
+            <span class="website-name">TA Dashboard</span>
+             <!-- <h1>TA Dashboard</h1> -->
+        </div>
+        
+    </header>
+    <main>
+        <form method="POST" action="/generate_code" class="attendance-form">
+            <button type="submit" class="generate-btn">Generate Attendance Code</button>
+        </form>
+        <h1 class="student-title">Student Attendance Details</h1>
+        <table>
+            <tr>
+                <th>Student</th>
+                {% for date in unique_dates %}
+                    <th>{{ date }}</th>
+                {% endfor %}
+                <th>Attendance Percentage</th>
+            </tr>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.username }}</td>
+                    {% for date in unique_dates %}
+                        {% set attendance = attendance_details[student.id][date] if student.id in attendance_details and date in attendance_details[student.id] else 'absent' %}
+                        <td>{{ attendance }}</td>
+                    {% endfor %}
+                    <td>{{ attendance_percentages[student.id]|round(2) }}%</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="auth-links">
+            <a href="/logout">Logout</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 TA Dashboard. All rights reserved.</p>
+    </footer>
+</body>
+</html>

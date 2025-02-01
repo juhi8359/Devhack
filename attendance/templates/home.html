@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Attendo Logo" class="logo">
+            <span class="website-name">Attendo</span>
+        </div>
+      
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="welcome-section">
+            <h1>Welcome to Attendo</h1>
+            <p>Stay on top of your attendance.<br>Track your percentage effortlessly and stay informed, anytime, anywhere.</p>
+            <p class="get-started-text">Select a Course</p>
+
+            <!-- Course Selection Boxes -->
+            <div class="role-selection">
+                <div class="role-box course-box" onclick="redirectToCourse(this)">
+                    <img src="{{ url_for('static', filename='images/comparch2.jpg') }}" alt="Course 1" class="role-img">
+                    <p class="role-text">Computer Architecture</p>
+                </div>
+                <div class="role-box course-box" onclick="redirectToCourse(this)">
+                    <img src="{{ url_for('static', filename='images/analog.jpg') }}" alt="Course 2" class="role-img">
+                    <p class="role-text">Analog Circuits</p>
+                </div>
+                <div class="role-box course-box" onclick="redirectToCourse(this)">
+                    <img src="{{ url_for('static', filename='images/statistics.jpg') }}" alt="Course 3" class="role-img">
+                    <p class="role-text">Statistics</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Attendo. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Redirection -->
+    <script>
+        function redirectToCourse(element) {
+    window.location.href = "/login_page";  // Use the new route here
+}
+
+    </script>
+</body>
+</html>

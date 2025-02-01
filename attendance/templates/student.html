@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/student.css') }}">
+    <style>
+        /* Style for the popup message */
+        #attendance-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            z-index: 1000;
+        }
+    </style>
+    <script>
+        function showConfirmation() {
+            // Display the confirmation message
+            var message = document.getElementById('attendance-message');
+            message.style.display = 'block';
+
+            // Hide the message after 3 seconds
+            setTimeout(function() {
+                message.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <h1>Your Attendance: {{ percentage|round(2) }}%</h1>
+
+    <!-- Attendance Records Table -->
+    <h2>Your Attendance Records</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.date }}</td>
+            <td class="{{ 'present' if record.status == 'Present' else 'absent' }}">{{ record.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Mark Attendance Form -->
+    <h2>Mark Attendance</h2>
+    <form method="POST" action="/mark_attendance" onsubmit="showConfirmation()">
+        <input type="text" name="code" placeholder="Enter attendance code" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Popup message -->
+    <div id="attendance-message">Attendance marked successfully!</div>
+    <div class="auth-links">
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

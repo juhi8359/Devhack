@@ -1,0 +1,126 @@
+/* General styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Heading Styling */
+h1 {
+  color: #1e2a47;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Flash messages */
+.flashes {
+  margin-bottom: 20px;
+}
+
+.alert {
+  background-color: #ffcccc;
+  color: #b94a48;
+  padding: 15px;
+  margin: 10px auto;
+  width: 60%;
+  border-radius: 8px;
+  border: 1px solid #b94a48;
+  font-size: 1.1rem;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.alert:hover {
+  background-color: #f2b1b1;
+  border-color: #992d22;
+}
+
+/* Form styling */
+form {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Table styling */
+table {
+  width: 80%;
+  margin: 40px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+table:hover {
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+td {
+  color: #333;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect on table rows */
+tbody tr:hover {
+  background-color: #e8f4fc;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  table {
+      width: 100%;
+  }
+  button {
+      width: 100%;
+      padding: 12px 15px;
+  }
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  border-radius: 50px;
+}
+.website-name{
+  text-align: center;
+  font-size: 50px;
+}

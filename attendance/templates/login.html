@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/3.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Attendo Logo" class="logo">
+            <span class="website-name">Attendo</span>
+        </div>
+        <div class="auth-links">
+            <a href="#" class="login" onclick="showLogin('professor')">Login as Professor</a>
+            <a href="#" class="login" onclick="showLogin('student')">Login as Student</a>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <div class="welcome-section">
+            <h1>Welcome to the Course login Page</h1>
+
+            <a href="#" class="get-started">Get Started</a>
+
+            <!-- Professor and Student Boxes -->
+            <div class="role-selection">
+                <div class="role-box professor-box" onclick="showLogin('professor')">
+                    <img src="{{ url_for('static', filename='images/professor.jpg') }}" alt="Professor" class="role-img">
+                    <p class="role-text">Professor</p>
+                </div>
+                <div class="role-box student-box" onclick="showLogin('student')">
+                    <img src="{{ url_for('static', filename='images/student.jpg') }}" alt="Student" class="role-img">
+                    <p class="role-text">Student</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Form Section -->
+    <div class="login-form-container" id="login-form-container" style="display: none;">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form method="POST" action="/login">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="hidden" id="role" name="role">
+                <button type="submit">Login</button>
+                <button type="button" onclick="hideLoginForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Attendo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to show the login form with the selected role
+        function showLogin(role) {
+            document.getElementById('role').value = role;
+            document.getElementById('login-form-container').style.display = 'block';
+        }
+
+        // Function to hide the login form
+        function hideLoginForm() {
+            document.getElementById('login-form-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
